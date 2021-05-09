@@ -179,23 +179,25 @@ int main(int argc, const char* argv[]) {
     std::string input_dir;
     std::string input_base;
     SplitFilename(input_filename, &input_dir, &input_base);
-    std::string output_filename = output_root + "/" + input_base;
+    std::string output_filename = output_root;// + "/" + input_base;
     output_filenames.push_back(output_filename);
-    std::string output_dir;
-    std::string output_base;
-    SplitFilename(output_filename, &output_dir, &output_base);
-    output_dirs.insert(output_dir);
+    // std::string output_dir;
+    // std::string output_base;
+    // SplitFilename(output_filename, &output_dir, &output_base);
+    // output_dirs.insert(output_dir);
   }
 
   for (const std::string& output_dir : output_dirs) {
     mkdir(output_dir.c_str(), ACCESSPERMS);
   }
+  
+  const int64_t desired_length_ms = atoi(argv[3]);
 
   assert(input_filenames.size() == output_filenames.size());
   for (int64_t i = 0; i < input_filenames.size(); ++i) {
     const std::string input_filename = input_filenames[i];
     const std::string output_filename = output_filenames[i];
-    const int64_t desired_length_ms = 1000;
+    // const int64_t desired_length_ms = 1500;
     const float min_volume = 0.004f;
     Status trim_status =
       TrimFile(input_filename, output_filename, desired_length_ms, min_volume);

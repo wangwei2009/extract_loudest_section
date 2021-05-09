@@ -1,4 +1,4 @@
-MAKEFILE_DIR := /tmp/extract_loudest_section/
+MAKEFILE_DIR := ./
 
 # Where compiled objects are stored.
 OBJDIR := $(MAKEFILE_DIR)/gen/obj/
