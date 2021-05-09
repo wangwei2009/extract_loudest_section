@@ -129,12 +129,12 @@ Status TrimFile(const std::string& input_filename,
   for (float trimmed_sample : trimmed_samples) {
     total_volume += fabsf(trimmed_sample);
   }
-  const float average_volume = total_volume / desired_samples;
-  if (average_volume < min_volume) {
-    std::cerr << "Skipped '" << input_filename << "' as too quiet (" 
-	      << average_volume << ")" << std::endl;
-    return Status::OK();
-  }
+  // const float average_volume = total_volume / desired_samples;
+  // if (average_volume < min_volume) {
+  //   std::cerr << "Skipped '" << input_filename << "' as too quiet (" 
+	//       << average_volume << ")" << std::endl;
+  //   return Status::OK();
+  // }
 
   std::string output_wav_data;
   Status save_wav_status =
